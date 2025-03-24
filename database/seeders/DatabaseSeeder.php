@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Todo;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Hash;
@@ -25,5 +26,8 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'is_admin' => true,
         ]);
+
+        User::factory(100)->create();
+        Todo::factory(500)->create();
     }
 }
