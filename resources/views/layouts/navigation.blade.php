@@ -11,18 +11,24 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('todo.view')" :active="request()->routeIs('todo.view')">
-                        {{ __('Todo') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                        {{ __('User') }}
-                    </x-nav-link>
-                </div>
-            </div>
+<div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+    <!-- Dashboard Link -->
+    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        {{ __('Dashboard') }}
+    </x-nav-link>
+
+    <!-- Todo Link -->
+    <x-nav-link :href="route('todo.index')" :active="request()->routeIs('todo.index')">
+        {{ __('Todo') }}
+    </x-nav-link>
+
+    <!-- User Link (Only for admin) -->
+    @can('admin')
+        <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+            {{ __('User') }}
+        </x-nav-link>
+    @endcan
+</div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
